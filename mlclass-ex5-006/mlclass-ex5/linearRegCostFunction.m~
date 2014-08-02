@@ -32,6 +32,6 @@ grad_beta_other = ((1/m) * sum((pred - y)' * X(:,2:end),1))' + ...
 
 % =========================================================================
 
-grad = [grad_beta0(:) ; grad_beta_other(:)];
+grad = grad([grad_beta0 ; grad_beta_other](:));
 
 end

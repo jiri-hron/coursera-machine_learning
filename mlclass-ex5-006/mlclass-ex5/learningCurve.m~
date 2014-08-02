@@ -59,10 +59,10 @@ for i = 1:m,
 	Xi = X(1:i,:);
 	yi = y(1:i);
 	theta = trainLinearReg(Xi, yi, lambda);
-	[J_train, grad] = linearRegCostFunction(Xi, yi, theta, 0);
-	[J_val, grad] = linearRegCostFunction(Xval, yval, theta, 0);
-	error_train(i) = J_train;
-	error_val(i) = J_val;
+	[J, grad] = linearRegCostFunction(Xi, yi, theta, 0);
+	pred_val = Xval * theta;
+	error_train(i) = J;
+	error_val(i) = (1/(2*mval)) * sum((pred_val - yval) .^ 2);
 end
 
 
